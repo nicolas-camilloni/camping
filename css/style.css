@@ -1,7 +1,11 @@
+body {
+    margin: 0;
+}
+
 #topnav {
     height: 50px;
     width: 100%;
-    background: #29e496;
+    background: #28bf81;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
