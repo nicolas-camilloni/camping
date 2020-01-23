@@ -77,6 +77,9 @@ session_start();
                 </article>
             </section>
         </section>
+        <section id="cbtnres">
+            <a href="reservationform.php"><p>Réserver</p></a>
+        </section>
     </section>
 </main>
 
