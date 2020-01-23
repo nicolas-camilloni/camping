@@ -18,30 +18,37 @@
             </article>
         </article>
     </section>
-        <nav class="nav">
+    <a id="logocamping">
+        <img src="img/logocamping.png" alt="logo">
+    </a>
+    <nav class="nav">
+        <section id="navleft">
             <section>
-                <a href="index.php">Accueil</a>
+                <a href="index.php"><p>Accueil</p></a>
             </section>
             <section>
-                <a href="topics.php"><span>T</span>opics</a>
+                <a href="topics.php"><p>Planning</p></a>
             </section>
+        </section>
+        <section id="navright">
             <?php if( !isset($_SESSION['login']) ){ ?>
             <section>
-                <a href="inscription.php"><span>I</span>nscription</a>
+                <a href="inscription.php"><p>Inscription</p></a>
             </section>
             <section>
-                <a href="connexion.php"><span>C</span>onnexion</a>
+                <a href="connexion.php"><p>Connexion</p></a>
             </section>
             <?php } if( isset($_SESSION['login']) ){ ?>
              <section>
-                <a href="profil.php"><span>P</span>rofil</a>
+                <a href="profil.php"><p>Mon compte</p></a>
             </section>
             <section>
                 <form action="index.php" method="get">
                     <input type="submit" name="deco" value="Déconnexion" />
                 </form>
-                <a href="index.php?deco"><span>D</span>éconnexion</a>
+                <a href="index.php?deco"><p>Déconnexion</p></a>
             </section>
             <?php } ?>
-        </nav>
-    </header>
+        </section>
+    </nav>
+</header>
