@@ -6,7 +6,7 @@
     $ischampremplis = false;
 
     if ( isset($_POST['connexion']) == true && isset($_POST['login']) && strlen($_POST['login']) != 0 && isset($_POST['password']) && strlen($_POST['password']) != 0 ) {
-        $connexion = mysqli_connect("localhost", "root", "", "reservationsalles");
+        $connexion = mysqli_connect("localhost", "root", "", "camping");
         $requete = "SELECT * FROM utilisateurs WHERE login ='".$_POST['login']."'";
         $query = mysqli_query($connexion, $requete);
         $resultat = mysqli_fetch_all($query);
@@ -37,20 +37,22 @@
 
 <html>
 <head>
-    <title>Reservation Salles</title>
+    <title>Campigo - Connexion</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <?php include("header.php"); ?>
     <main>
-        <section>
+        <img class="top" src="img/topconnexion.jpg">
+        <section class="cform">
             <?php
             if ( !isset($_SESSION['login']) ) {
                 ?>
-                <form method="post" action="connexion.php">
-                    <label>IDENTIFIANT</label>
+                <article><h1>Connexion</h1></article>
+                <form class="form" method="post" action="connexion.php">
+                    <label>Identifiant</label>
                     <input type="text" name="login" ><br />
-                    <label>MOT DE PASSE</label>
+                    <label>Mot de passe</label>
                     <input type="password" name="password" ><br />
                     <input type="submit" value="Se connecter" name="connexion" >
                 </form>
@@ -74,8 +76,10 @@
 
             elseif ( isset($_SESSION['login']) ) {
             ?>
-                <center><p>ERREUR<br />
-                Vous êtes déjà connecté !</p></center>
+                <article class="dejaco">
+                    <p>ERREUR<br />
+                    Vous êtes déjà connecté !</p>
+                </article>
             <?php
             }
             ?>

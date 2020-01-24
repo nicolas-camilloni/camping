@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_GET["deco"])) {
+    session_unset();
+    session_destroy();
+    header('Location:index.php');
+}
 ?>
 
 <!doctype html>
@@ -82,6 +87,10 @@ session_start();
         </section>
     </section>
 </main>
+
+<?php
+    include("footer.php");
+?>
 
 </body>
 </html>

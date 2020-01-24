@@ -27,7 +27,7 @@
                 <a href="index.php"><p>Accueil</p></a>
             </section>
             <section>
-                <a href="topics.php"><p>Planning</p></a>
+                <a href="planning.php"><p>Planning</p></a>
             </section>
         </section>
         <section id="navright">
@@ -44,7 +44,7 @@
             </section>
             <section>
                 <form action="index.php" method="get">
-                    <input type="submit" name="deco" value="Déconnexion" />
+                    <button type="submit" name="deco" value="Déconnexion" />
                 </form>
                 <a href="index.php?deco"><p>Déconnexion</p></a>
             </section>
