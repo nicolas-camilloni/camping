@@ -44,7 +44,7 @@
             </section>
             <section>
                 <form action="index.php" method="get">
-                    <button type="submit" name="deco" value="Déconnexion" />
+                    <button type="submit" name="deco" value="Déconnexion">
                 </form>
                 <a href="index.php?deco"><p>Déconnexion</p></a>
             </section>

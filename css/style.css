@@ -170,7 +170,6 @@ main {
 }
 
 .top {
-    height: 100%;
     width: 100%;
     border-bottom: 4px solid #2cda93;
 }
@@ -349,7 +348,7 @@ main {
     transition: all 0.25s;
 }
 
-/* ================= INSCRIPTION ================= */
+/* ================= FORMULAIRES ================= */
 
 .form {
     display: flex;
@@ -427,6 +426,38 @@ main {
     font-size: 24px;
     font-family: "Raleway-Regular";
     text-align: center;
+}
+
+/* ================= PLANNING ================= */
+
+#dateplanning {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 0 0;
+    font-size: 46px;
+}
+
+#dateplanning p {
+    margin: 0 50px 0 50px;
+    font-family: "Pacifico";
+    line-height: 44px;
+}
+
+#dateplanning input {
+    font-size: 44px;
+    background-color: transparent;
+    border: none;
+    color: #2cda93;
+    margin: 0;
+    line-height: 44px;
+    font-family: "Pacifico";
+}
+
+#dateplanning input:hover {
+    border: 2px solid black;
+    cursor: pointer;
 }
 
 /* ================= FOOTER ================= */

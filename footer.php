@@ -58,6 +58,6 @@
 		</section>
 		<section id="containercopyright">
 			<article id="copyright">
-				Copyright 2019 - La Plateforme | Nicolas & Thierry
+				Copyright 2020 - La Plateforme | Nicolas & Thierry
 		</section>
 	</footer>

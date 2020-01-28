@@ -22,8 +22,6 @@ echo $_SESSION["num"];
 
 date_add($datejour, date_interval_create_from_date_string($_SESSION['num']." days"));
 
-echo date_format($datejour, 'Y-m-d');
-
 $dateselec = date_format($datejour, 'Y-m-d');
 
 var_dump($dateselec);
@@ -40,99 +38,106 @@ var_dump($dateselec);
 <?php
     include("header.php");
 ?>
-
-<form method="post" action="planning.php">
-    <input type="submit" name="suivant" value=">">
-    <input type="submit" name="precedent" value="<">
-</form>
-
-<?php
-
-$connexion = mysqli_connect("localhost", "root", "", "camping");
-$requete = "SELECT login, type, lieu, DATE_FORMAT(debut, \"%Y-%m-%d\"), DATE_FORMAT(fin, \"%Y-%m-%d\"), option1, option2, option3, prix FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE \"$dateselec\" BETWEEN DATE_FORMAT(debut, \"%Y-%m-%d\") AND DATE_FORMAT(fin, \"%Y-%m-%d\")";
-echo $requete;
-$query = mysqli_query($connexion, $requete);
-var_dump($query);
-$resultat = mysqli_fetch_all($query);
-var_dump($resultat);
-
-$capacite1 = 0;
-$capacite2 = 0;
-$capacite3 = 0;
-
-foreach ( $resultat as $key ) {
-    if ( $key[2] == "plage" ) {
-        if ( $key[1] == "tente" ) {
-            $capacite1 += 1;
-        }
-        elseif ( $key[1] == "campingcar" ) {
-            $capacite1 += 2;
-        }
-    }
-    if ( $key[2] == "pins" ) {
-        if ( $key[1] == "tente" ) {
-            $capacite2 += 1;
-        }
-        elseif ( $key[1] == "campingcar" ) {
-            $capacite2 += 2;
-        }
-    }
-    if ( $key[2] == "maquis" ) {
-        if ( $key[1] == "tente" ) {
-            $capacite3 += 1;
-        }
-        elseif ( $key[1] == "campingcar" ) {
-            $capacite3 += 2;
-        }
-    }
-
-    echo $capacite1;
-    echo $capacite2;
-    echo $capacite3;
-
-    $capacite = [$capacite1, $capacite2, $capacite3];
-    var_dump($capacite);
-
-}
-
-?>
-   <table>
-       <thead>
-           <tr>
-               <th></th>
-               <th>Plage</th>
-               <th>Pins</th>
-               <th>Maquis</th>
-       </thead>
-       <tbody>
+<main>
+    <img class="top" src="img/topplanning.jpg">
+    <section id="cdateplanning">
+    <form id="dateplanning" method="post" action="planning.php">
+        <input type="submit" name="precedent" value="<">
+        <p><?php echo date_format($datejour, 'd-m-Y'); ?></p>
+        <input type="submit" name="suivant" value=">">
+    </form>
+    </section>
 
     <?php
-    for ( $emplacement = 1; $emplacement < 5; $emplacement++ ) {
-        echo "<tr>";
-        echo "<td>Emplacement:".$emplacement."";
 
-        for ( $lieu=0; $lieu < 3; $lieu++ ) { 
-        echo "<td>";
+    $connexion = mysqli_connect("localhost", "root", "", "camping");
+    $requete = "SELECT login, type, lieu, DATE_FORMAT(debut, \"%Y-%m-%d\"), DATE_FORMAT(fin, \"%Y-%m-%d\"), option1, option2, option3, prix FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE \"$dateselec\" BETWEEN DATE_FORMAT(debut, \"%Y-%m-%d\") AND DATE_FORMAT(fin, \"%Y-%m-%d\")";
+    echo $requete;
+    $query = mysqli_query($connexion, $requete);
+    var_dump($query);
+    $resultat = mysqli_fetch_all($query);
+    var_dump($resultat);
 
-            if ( $capacite[$lieu] >= $emplacement ) {
-                echo "Reservé";
+    $capacite1 = 0;
+    $capacite2 = 0;
+    $capacite3 = 0;
+
+    foreach ( $resultat as $key ) {
+        if ( $key[2] == "plage" ) {
+            if ( $key[1] == "tente" ) {
+                $capacite1 += 1;
             }
-             
-            else{
-              echo "Dispo";
+            elseif ( $key[1] == "campingcar" ) {
+                $capacite1 += 2;
             }
-           
-            echo "</td>";
         }
-        
-        echo "</tr>";
-          
-    }
-        
-        
-        
-    ?>
-    
-       </tbody>
+        if ( $key[2] == "pins" ) {
+            if ( $key[1] == "tente" ) {
+                $capacite2 += 1;
+            }
+            elseif ( $key[1] == "campingcar" ) {
+                $capacite2 += 2;
+            }
+        }
+        if ( $key[2] == "maquis" ) {
+            if ( $key[1] == "tente" ) {
+                $capacite3 += 1;
+            }
+            elseif ( $key[1] == "campingcar" ) {
+                $capacite3 += 2;
+            }
+        }
 
-   </table>
+        echo $capacite1;
+        echo $capacite2;
+        echo $capacite3;
+
+        $capacite = [$capacite1, $capacite2, $capacite3];
+        var_dump($capacite);
+
+    }
+
+    ?>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Plage</th>
+                <th>Pins</th>
+                <th>Maquis</th>
+        </thead>
+        <tbody>
+
+        <?php
+        for ( $emplacement = 1; $emplacement < 5; $emplacement++ ) {
+            echo "<tr>";
+            echo "<td>Emplacement:".$emplacement."";
+
+            for ( $lieu=0; $lieu < 3; $lieu++ ) { 
+            echo "<td>";
+
+                if ( $capacite[$lieu] >= $emplacement ) {
+                    echo "Reservé";
+                }
+                
+                else{
+                echo "Dispo";
+                }
+            
+                echo "</td>";
+            }
+            
+            echo "</tr>";
+            
+        }
+            
+            
+            
+        ?>
+        
+        </tbody>
+
+    </table>
+    </main>
+</body>
+</html>
