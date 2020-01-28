@@ -51,16 +51,16 @@ if (isset($_GET["deco"])) {
                     <p>Accès borne électrique: <span class="green">+2€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17/j</span></p>
+                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès aux activités (Yogo, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
+                    <p>Accès aux activités (Yoga, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
                 </article>
             </section>
             <section class="ctabletarif2">
                 <article id="titretarif">
                     <img id="imgtente" src="img/mobilhome.png" alt="mobilhome">
-                    <h1>Mobil-Home</h1>
+                    <h1>Campingcar</h1>
                 </article>
                 <article class="casetarif">
                     <p>Emplacements occupés: <span class="green">2</span></p>
@@ -75,10 +75,10 @@ if (isset($_GET["deco"])) {
                     <p>Accès borne électrique: <span class="green">+2€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17/j</span></p>
+                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès aux activités (Yogo, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
+                    <p>Accès aux activités (Yoga, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
                 </article>
             </section>
         </section>

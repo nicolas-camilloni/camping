@@ -18,7 +18,7 @@
             </article>
         </article>
     </section>
-    <a id="logocamping">
+    <a href="index.php" id="logocamping">
         <img src="img/logocamping.png" alt="logo">
     </a>
     <nav class="nav">

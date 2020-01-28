@@ -7,38 +7,57 @@ session_start();
 <html>
 
 <head>
-    <title>Reservation Salles</title>
+    <title>Campigo - Mon compte</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
     <?php include("header.php"); ?>
     <main>
-
-        <section>
+        <img class="top" src="img/topmoncompte.jpg">
+        <section class="cform">
             <?php
             if (isset($_SESSION['login']))
             {
-                $connexion = mysqli_connect("localhost", "root", "", "reservationsalles");
+                $connexion = mysqli_connect("localhost", "root", "", "camping");
                 $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'";
                 $query = mysqli_query($connexion, $requete);
                 $resultat = mysqli_fetch_assoc($query);
 
                 ?>
 
-                <form action="profil.php" method="post">
-                    <label> Login </label>
+                <article><h1>Mon profil</h1></article>
+                <form class="form" action="profil.php" method="post">
+                    <label> Identifiant </label>
                     <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
-                    <label> New Password </label>
+                    <label> Nouveau mot de passe </label>
                     <input type="password" name="passwordx" />
-                    <label> Confirm New Password </label>
+                    <label> Confirmation du mot de passe </label>
                     <input type="password" name="passwordconf" />
                     <input name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
                     <br>
                     <input type="submit" name="modifier" value="Modifier" />
                 </form>
 
-                <?php 
+                <article><h1>Mes réservations</h1></article>
+                <?php
+
+                $requeteres = "SELECT reservations.id,lieu,type,sejour,debut,fin,option1,option2,option3,prix FROM reservations INNER JOIN utilisateurs ON reservations.id_utilisateur = utilisateurs.id WHERE login = '" . $_SESSION['login'] . "'";
+                echo $requeteres;
+                $queryres = mysqli_query($connexion, $requeteres);
+                $resultatres = mysqli_fetch_all($queryres);
+
+                foreach ( $resultatres as $key ) {
+                ?>
+
+                <a class="creslist">
+                    <section class="restop"></section>
+                    <section class="resbot"></section>
+                </a>
+
+                <?php
+                }
+
                     if (isset($_POST['modifier']) ) 
                     {
                          if ($_POST["passwordx"] != $_POST["passwordconf"]) 
