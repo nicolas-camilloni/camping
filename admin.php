@@ -13,7 +13,7 @@ if (isset($_GET["deco"])) {
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Campigo - Accueil</title>
+    <title>Campigo - ADMIN PANEL</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,68 +24,87 @@ if (isset($_GET["deco"])) {
 
 <main>
     <img class="top" src="img/topindex.jpg">
-    <article id="cbvn">
-        <h1>Campigo, un camping idéalement placé</h1>
-        <p>Notre camping familial 4 étoiles vous accueille dans un environnement privilégié à quelques kilomètres de Marseille pour découvrir les plus grands sites de la région PACA. Les rivières sont à 3 km pour la pratique du canoé. Nous vous proposons de vous retrouver en famille et de profiter de nos bons plans dans notre camping à Marseille en location mobil home ou tente. Pour les randonnées pédestres ou équestres, vous partirez sur des chemins de randonnées balisés à partir du camping. Des jeunes enfants dans votre famille? Ne cherchez plus! Notre camping vous propose des animations et activités qui leur sont spécialement dédiés.</p>
-    </article>
-    <section id="ctarif">
-        <section id="toptarif">
-            <h1>TARIFS</h1>
-        </section>
-        <section id="tarif">
-            <section class="ctabletarif1">
-                <article id="titretarif">
-                    <img id="imgtente" src="img/tente.png" alt="tente">
-                    <h1>Tente</h1>
-                </article>
-                <article class="casetarif">
-                    <p>Emplacements occupés: <span class="green">1</span></p>
-                </article>
-                <article class="casetarifnoborder">
-                    <p>Prix: <span class="green">10€/j</span><p>
-                </article>
-                <article id="optioncase">
-                    <p>Options</p>
-                </article>
-                <article class="casetarif">
-                    <p>Accès borne électrique: <span class="green">+2€/j</span></p>
-                </article>
-                <article class="casetarif">
-                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17/j</span></p>
-                </article>
-                <article class="casetarif">
-                    <p>Accès aux activités (Yogo, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
-                </article>
-            </section>
-            <section class="ctabletarif2">
-                <article id="titretarif">
-                    <img id="imgtente" src="img/mobilhome.png" alt="mobilhome">
-                    <h1>Mobil-Home</h1>
-                </article>
-                <article class="casetarif">
-                    <p>Emplacements occupés: <span class="green">2</span></p>
-                </article>
-                <article class="casetarifnoborder">
-                    <p>Prix: <span class="green">20€/j</span><p>
-                </article>
-                <article id="optioncase">
-                    <p>Options</p>
-                </article>
-                <article class="casetarif">
-                    <p>Accès borne électrique: <span class="green">+2€/j</span></p>
-                </article>
-                <article class="casetarif">
-                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17/j</span></p>
-                </article>
-                <article class="casetarif">
-                    <p>Accès aux activités (Yogo, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
-                </article>
-            </section>
-        </section>
-        <section id="cbtnres">
-            <a href="reservationform.php"><p>Réserver</p></a>
-        </section>
-    </section>
+
+    <?php  
+
+           $cnx = mysqli_connect("localhost", "root", "", "camping");
+           $requetetarifs = "SELECT * FROM tarifs";
+           $querytarifs = mysqli_query($cnx, $requetetarifs);
+           $resultattarifs = mysqli_fetch_all($querytarifs, MYSQLI_ASSOC);
+           $tarifeactuel = $resultattarifs[0]['tarifemplacement'];
+           $tarifeo1actuel = $resultattarifs[0]['tarifo1'];
+           $tarifeo2actuel = $resultattarifs[0]['tarifo2'];
+           $tarifeo3actuel = $resultattarifs[0]['tarifo3'];
+
+            if (!empty($_SESSION['login'])) 
+             {
+
+              if ($_SESSION['login'] == "admin") {
+    ?>
+                <form action="admin.php" method="post">
+                <section class="cform">
+                <?php echo "Tarif actuel de l'option 1: ".$tarifeo1actuel; ?>
+                <br>
+                <br>
+                <label>Modifier Tarif Option 1</label>
+                <input type="number" id="newtarifo1" name="newtarifo1">
+                <br>
+                <?php echo "Tarif actuel de l'option 2: ".$tarifeo2actuel; ?>
+                <br>
+                <br>
+                <label>Modifier Tarif Option 2</label>
+                <input type="number" id="newtarifo2" name="newtarifo2">
+                <br>
+                <?php echo "Tarif actuel de l'option 3: ".$tarifeo3actuel; ?>
+                <br>
+                <br>
+                <label>Modifier Tarif Option 3</label>
+                <input type="number" id="newtarifo3" name="newtarifo3">
+                <br>
+                <?php echo "Tarif actuel d'1 emplacement: ".$tarifeactuel; ?>
+                <br>
+                <br>
+                <label>Modifier Tarif Emplacement</label>
+                <input type="number" id="newtarifemplacement" name="newtarifemplacement">
+                <br>
+                <input type="submit" name="modiftarifs" value="Modifier" />
+                </section>
+                </form>  
+            <?php 
+              if (isset($_POST['modiftarifs']) ) {
+                   $newtarifo1 = $tarifeo1actuel;
+                   $newtarifo2 = $tarifeo2actuel;
+                   $newtarifo3 = $tarifeo3actuel;
+                   $newtarifemplacement = $tarifeactuel;
+
+                   if(!empty($_POST['newtarifo1'])){
+                    $newtarifo1 = $_POST['newtarifo1'];
+                   }
+                    if(!empty($_POST['newtarifo2'])){
+                    $newtarifo2 = $_POST['newtarifo2'];
+                   }
+                   if(!empty($_POST['newtarifo3'])){
+                    $newtarifo3 = $_POST['newtarifo3'];
+                   }
+                   if(!empty($_POST['newtarifemplacement'])){
+                    $newtarifemplacement = $_POST['newtarifemplacement'];
+                   }
+
+
+                    $changetarifs = "UPDATE tarifs SET tarifo1 ='$newtarifo1', tarifo2 ='$newtarifo2', tarifo3 ='$newtarifo3', tarifemplacement ='$newtarifemplacement' ";
+                    $querychangetarifs = mysqli_query($cnx, $changetarifs);
+                    header('Location:admin.php');
+                }
+            }
+            else {
+                echo "Vous n'avez pas acces a cette page.";
+            }
+        }
+        else{
+            echo "Vous devez vous connecter en tant qu'admin pour acceder a cette page";
+        }
+        ?>
+    
 </main>
 
 <?php
