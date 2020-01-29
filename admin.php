@@ -83,7 +83,7 @@ if (isset($_GET["deco"])) {
             </section>
         </section>
         <section id="cbtnres">
-            <a href="reservation-form.php"><p>Réserver</p></a>
+            <a href="reservationform.php"><p>Réserver</p></a>
         </section>
     </section>
 </main>
