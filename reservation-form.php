@@ -17,8 +17,12 @@
                     $requete2 = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
                     $query2 = mysqli_query($cnx, $requete2);
                     $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
+
+                    $requeteprix = "SELECT * FROM tarifs";
+                    $queryprix = mysqli_query($cnx, $requeteprix);
+                    $resultatprix = mysqli_fetch_all($queryprix);
             ?>
-                   <article><h1>Réserver un emplacement</h1></article>
+                   <article><h1>Réserver</h1></article>
                    <form class="form" method="post" action="reservation-form.php">
                    <label for="text"><b>Lieu</b></label>
                    <select name="lieu">
@@ -29,15 +33,15 @@
                    <br>
                    <label for="text"><b>Type</b></label>
                    <select name="type">
-                   <option value="Tente">Tente</option>
-                   <option value="Campingcar">Camping Car</option>
+                   <option value="Tente">Tente (1 emplacement)</option>
+                   <option value="Campingcar">Campingcar (2 emplacements)</option>
                    </select>
                    <br>
                   <section id="coptionsform">
                    <label for="text"><b>Options</b></label>
-                   <article class="coptionsformcase"><input type="checkbox" name="option1" value="borne" /><p>Accès borne électrique</p></article>
-                   <article class="coptionsformcase"><input type="checkbox" name="option2" value="disco" /><p>Accès au Disco Club "Les girelles dansantes"</p></article>
-                   <article class="coptionsformcase"><input type="checkbox" name="option3" value="activites" /><p>Accès aux activités (Yogo, Frisbee et Ski Nautique)</p></article>
+                   <article class="coptionsformcase"><input type="checkbox" name="option1" value="borne" /><p>Accès borne électrique (+<span class="green"><?php echo $resultatprix[0][0]; ?>€/j</span>)</p></article>
+                   <article class="coptionsformcase"><input type="checkbox" name="option2" value="disco" /><p>Accès au Disco Club "Les girelles dansantes" (+<span class="green"><?php echo $resultatprix[0][1]; ?>€/j</span>)</p></article>
+                   <article class="coptionsformcase"><input type="checkbox" name="option3" value="activites" /><p>Accès aux activités (Yoga, Frisbee et Ski Nautique) (+<span class="green"><?php echo $resultatprix[0][2]; ?>€/j</span>)</p></article>
                   </section>
                    <label for="datedebut"><b>Date debut</b></label>
                    <input type="date" name="datedebut" required> 

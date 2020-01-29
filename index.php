@@ -7,6 +7,12 @@ if (isset($_GET["deco"])) {
     session_destroy();
     header('Location:index.php');
 }
+
+$cnx = mysqli_connect("localhost", "root", "", "camping");
+$requeteprix = "SELECT * FROM tarifs";
+$queryprix = mysqli_query($cnx, $requeteprix);
+$resultatprix = mysqli_fetch_all($queryprix);
+
 ?>
 
 <!doctype html>
@@ -42,19 +48,19 @@ if (isset($_GET["deco"])) {
                     <p>Emplacements occupés: <span class="green">1</span></p>
                 </article>
                 <article class="casetarifnoborder">
-                    <p>Prix: <span class="green">10€/j</span><p>
+                    <p>Prix: <span class="green"><?php echo $resultatprix[0][3]; ?>€/j</span><p>
                 </article>
                 <article id="optioncase">
                     <p>Options</p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès borne électrique: <span class="green">+2€/j</span></p>
+                    <p>Accès borne électrique: <span class="green"><?php echo $resultatprix[0][0]; ?>€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17€/j</span></p>
+                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green"><?php echo $resultatprix[0][1]; ?>€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès aux activités (Yoga, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
+                    <p>Accès aux activités (Yoga, Frisbee et Ski Nautique): <span class="green"><?php echo $resultatprix[0][2]; ?>€/j</span></p>
                 </article>
             </section>
             <section class="ctabletarif2">
@@ -66,19 +72,19 @@ if (isset($_GET["deco"])) {
                     <p>Emplacements occupés: <span class="green">2</span></p>
                 </article>
                 <article class="casetarifnoborder">
-                    <p>Prix: <span class="green">20€/j</span><p>
+                    <p>Prix: <span class="green"><?php echo $resultatprix[0][3]*2; ?>€/j</span><p>
                 </article>
                 <article id="optioncase">
                     <p>Options</p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès borne électrique: <span class="green">+2€/j</span></p>
+                    <p>Accès borne électrique: <span class="green"><?php echo $resultatprix[0][0]; ?>€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green">+17€/j</span></p>
+                    <p>Accès au Disco Club "Les girelles dansantes": <span class="green"><?php echo $resultatprix[0][1]; ?>€/j</span></p>
                 </article>
                 <article class="casetarif">
-                    <p>Accès aux activités (Yoga, Frisbee et Ski Nautique): <span class="green">+30€/j</span></p>
+                    <p>Accès aux activités (Yoga, Frisbee et Ski Nautique): <span class="green"><?php echo $resultatprix[0][2]; ?>€/j</span></p>
                 </article>
             </section>
         </section>
