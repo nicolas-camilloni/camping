@@ -115,7 +115,7 @@ $dateselec = date_format($datejour, 'Y-m-d');
             echo "<td id=\"caseemplacement\">Emplacement ".$emplacement."";
 
             for ( $lieu=0; $lieu < 3; $lieu++ ) { 
-                if ( $capacite[$lieu] >= $emplacement ) {
+                if ( !empty($resultat) && $capacite[$lieu] >= $emplacement ) {
                     echo "<td class=\"reserve\">Reservé</td>";
                 }
                 else{
