@@ -1,7 +1,7 @@
 <?php session_start() ?>
 <html>
 <head>
-<title>Resérvation CampinGO</title>
+<title>Campigo - Réservation</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -17,10 +17,9 @@
                     $requete2 = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
                     $query2 = mysqli_query($cnx, $requete2);
                     $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
-                    echo "Bonjour, " . $_SESSION["login"] . " vous êtes connecté vous pouvez passer une reservation.<br />";
             ?>
-                   <article><h1>Veuillez remplir le formulaire suivant :</h1></article>
-                   <form class="form_site" method="post" action="reservation-form.php">
+                   <article><h1>Réserver un emplacement</h1></article>
+                   <form class="form" method="post" action="reservation-form.php">
                    <label for="text"><b>Lieu</b></label>
                    <select name="lieu">
                    <option value="Plage">Plage</option>
@@ -34,21 +33,19 @@
                    <option value="Campingcar">Camping Car</option>
                    </select>
                    <br>
+                  <section id="coptionsform">
                    <label for="text"><b>Options</b></label>
-                   <br>
-                   <input type="checkbox" name="option1" value="borne" /> Accès borne électrique
-                   <br>
-                   <input type="checkbox" name="option2" value="disco" /> Accès au Disco Club "Les girelles dansantes"
-                   <br>
-                   <input type="checkbox" name="option3" value="activites" /> Accès aux activités (Yogo, Frisbee et Ski Nautique)
-                   <br>
+                   <article class="coptionsformcase"><input type="checkbox" name="option1" value="borne" /><p>Accès borne électrique</p></article>
+                   <article class="coptionsformcase"><input type="checkbox" name="option2" value="disco" /><p>Accès au Disco Club "Les girelles dansantes"</p></article>
+                   <article class="coptionsformcase"><input type="checkbox" name="option3" value="activites" /><p>Accès aux activités (Yogo, Frisbee et Ski Nautique)</p></article>
+                  </section>
                    <label for="datedebut"><b>Date debut</b></label>
                    <input type="date" name="datedebut" required> 
                    <br>
                    <label for="datefin"><b>Date fin</b></label>
                    <input type="date" name="datefin" required> 
                    <br>
-                   <input type="submit" value="SUBMIT EVENT" name="valider" />
+                   <input type="submit" value="Réserver" name="valider" />
                    </form>
             <?php
                     $requetetarifs = "SELECT * FROM tarifs";
@@ -69,7 +66,7 @@
                           $enddate = date('Y-m-d H:i:s', strtotime($datefin));
                           $startunix = strtotime($datedebut);
                           $endunix = strtotime($datefin);
-                          $sejour =  ($endunix - $startunix)/86400;
+                          $sejour =  ($endunix - $startunix)/86400 + 1;
                           $prix = 0;
                           if ($type == "Tente") {
                             $prix =  $resultattarifs[0]['tarifemplacement'] * $sejour;
@@ -79,17 +76,17 @@
                             $prix = ($resultattarifs[0]['tarifemplacement'] * 2) * $sejour;
                             $capaciteneed = 2;
                           }
-                          if(isset($option1))
+                          if(isset($_POST['option1']))
                           {
                             $option1 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo1'] * $sejour);
                           }
-                          if(isset($option2))
+                          if(isset($_POST['option2']))
                           {
                             $option2 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo2'] * $sejour);
                           }
-                          if(isset($option3))
+                          if(isset($_POST['option3']))
                           {
                             $option3 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo3'] * $sejour);
@@ -105,7 +102,7 @@
                               $resaverif = "SELECT * FROM reservations WHERE (debut BETWEEN '$startdate' AND '$enddate') OR (fin BETWEEN '$startdate' AND '$enddate')";
                               $queryverif = mysqli_query($cnx, $resaverif);
                               $resultatverif = mysqli_fetch_all($queryverif, MYSQLI_ASSOC);
-                              var_dump($resultatverif);
+                              // var_dump($resultatverif);
                               if(!empty($resultatverif)){
                                 $taille = sizeof($resultatverif);
                                 $i = 0;
@@ -120,18 +117,20 @@
                                 }
                               }
                               if ($capacite < $capaciteneed) {
-                                   echo "Plus de Place";
+                                   echo "<p class=\"pincorrect\">Plus de place disponible à cette date.</p>";
                               }
                               else{
                               $requete = "INSERT INTO reservations (lieu, type, sejour, debut, fin, option1, option2, option3, prix, id_utilisateur) VALUES ('$lieu', '$type', '$sejour', '$startdate', '$enddate', '$option1', '$option2', '$option3', '$prix', ".$resultat2[0]['id'].")";
                               $query = mysqli_query($cnx, $requete);
+                                   echo "<p class=\"green\">Votre réservation a bien été enregistrée.</p>";
+
                               }   
                           } 
                     }
             } 
             else 
             {
-                 echo "Bonjour Guest, Veuillez vous connecté afin de pouvoir reserver une salle.<br />";
+                 echo "<p>Bonjour, veuillez vous connecter afin de pouvoir réserver une salle.</p><br />";
                
             }
 

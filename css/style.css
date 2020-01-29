@@ -377,12 +377,15 @@ main {
 .cform p {
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
-    color: lightcoral;
     margin-top: 64px;
     font-weight: bold;
 }
 
-.form input[type="text"], .form input[type="password"] {
+.pincorrect {
+    color: lightcoral;
+}
+
+.form input[type="text"], .form input[type="password"], .form input[type="date"], select {
     height: 60px;
     width: 274px;
     margin-bottom: 64px;
@@ -391,7 +394,7 @@ main {
     font-size: 20px;
 }
 
-.form input[type="text"]:focus, .form input[type="password"]:focus {
+.form input[type="text"]:focus, .form input[type="password"]:focus, .form input[type="date"]:focus, select:focus {
     border: 4px solid #2cda93;
     outline: none;
 }
@@ -430,6 +433,35 @@ main {
     font-size: 24px;
     font-family: "Raleway-Regular";
     text-align: center;
+}
+
+#coptionsform {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 320px;
+    margin-bottom: 80px;
+}
+
+.coptionsformcase {
+    display: flex;
+    flex-direction: row;
+}
+
+#coptionsform p {
+    margin: 0 0 0 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-weight: normal;
+    font-family: "Raleway-Regular";
+}
+
+input[type="checkbox"] {
+    height: 36px;
+    width: 36px;
 }
 
 /* ================= PLANNING ================= */
