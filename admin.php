@@ -89,12 +89,36 @@ if (isset($_GET["deco"])) {
                    if(!empty($_POST['newtarifemplacement'])){
                     $newtarifemplacement = $_POST['newtarifemplacement'];
                    }
-
-
                     $changetarifs = "UPDATE tarifs SET tarifo1 ='$newtarifo1', tarifo2 ='$newtarifo2', tarifo3 ='$newtarifo3', tarifemplacement ='$newtarifemplacement' ";
                     $querychangetarifs = mysqli_query($cnx, $changetarifs);
                     header('Location:admin.php');
                 }
+
+                $getresa = "SELECT * FROM reservations";
+                $queryresa = mysqli_query($cnx, $getresa);
+                $resultatresa = mysqli_fetch_all($queryresa, MYSQLI_ASSOC);
+                echo "<center><table border>";
+                echo "<thead><tr>";
+                $taille = count($resultatresa) - 1;
+                foreach ($resultatresa[$taille] as $key => $value) 
+                {
+                 echo "<th>{$key}</th>";
+                }
+                 echo "</tr></thead>";
+                 echo "<tbody>";
+                 $i = 0;
+                while ($i <= $taille) 
+                {
+                 echo "<tr>";
+                foreach ($resultatresa[$i] as $key => $value) 
+                {
+                 echo "<td>{$value}</td>";
+                }
+                 echo "</tr>";
+                $i++;
+                }
+
+                echo "</tbody></table>";
             }
             else {
                 echo "Vous n'avez pas acces a cette page.";
