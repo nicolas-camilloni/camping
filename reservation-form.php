@@ -51,6 +51,9 @@
                    <input type="submit" value="SUBMIT EVENT" name="valider" />
                    </form>
             <?php
+                    $requetetarifs = "SELECT * FROM tarifs";
+                    $querytarifs = mysqli_query($cnx, $requetetarifs);
+                    $resultattarifs = mysqli_fetch_all($querytarifs, MYSQLI_ASSOC);
                     if ( isset($_POST["valider"]) )
                     {
                           $lieu = $_POST['lieu'];
@@ -67,31 +70,29 @@
                           $startunix = strtotime($datedebut);
                           $endunix = strtotime($datefin);
                           $sejour =  ($endunix - $startunix)/86400;
-                          var_dump($startdate);
-                          var_dump($sejour);
                           $prix = 0;
                           if ($type == "Tente") {
-                            $prix = 10 * $sejour;
+                            $prix =  $resultattarifs[0]['tarifemplacement'] * $sejour;
                             $capaciteneed = 1;
                           }
                           if ($type == "Campingcar") {
-                            $prix = 20 * $sejour;
+                            $prix = ($resultattarifs[0]['tarifemplacement'] * 2) * $sejour;
                             $capaciteneed = 2;
                           }
                           if(isset($option1))
                           {
                             $option1 = 1;
-                            $prix = $prix + (2 * $sejour);
+                            $prix = $prix + ($resultattarifs[0]['tarifo1'] * $sejour);
                           }
                           if(isset($option2))
                           {
                             $option2 = 1;
-                            $prix = $prix + (17 * $sejour);
+                            $prix = $prix + ($resultattarifs[0]['tarifo2'] * $sejour);
                           }
                           if(isset($option3))
                           {
                             $option3 = 1;
-                            $prix = $prix + (30 * $sejour);
+                            $prix = $prix + ($resultattarifs[0]['tarifo3'] * $sejour);
                           }
                           if($startdate < date('Y-m-d H:i:s')){
                               echo "Vous ne pouvez pas reserver a une date anterieur au ".date('d-m-Y H:i:s');
@@ -118,8 +119,6 @@
                                   $i++;
                                 }
                               }
-                              var_dump($capacite);
-                              var_dump($capaciteneed);
                               if ($capacite < $capaciteneed) {
                                    echo "Plus de Place";
                               }
