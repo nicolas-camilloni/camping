@@ -79,17 +79,17 @@
                             $prix = ($resultattarifs[0]['tarifemplacement'] * 2) * $sejour;
                             $capaciteneed = 2;
                           }
-                          if(isset($option1))
+                          if(isset($_POST['option1']))
                           {
                             $option1 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo1'] * $sejour);
                           }
-                          if(isset($option2))
+                          if(isset($_POST['option2']))
                           {
                             $option2 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo2'] * $sejour);
                           }
-                          if(isset($option3))
+                          if(isset($_POST['option3']))
                           {
                             $option3 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo3'] * $sejour);
