@@ -109,10 +109,11 @@ if (isset($_GET["deco"])) {
                  $i = 0;
                 while ($i <= $taille) 
                 {
+                 $idresa = $resultatresa[$i]['id'];
                  echo "<tr>";
                 foreach ($resultatresa[$i] as $key => $value) 
                 {
-                 echo "<td>{$value}</td>";
+                 echo "<td><a href=\"reservation.php?idresa=".$idresa."\">{$value}</a></td>";
                 }
                  echo "</tr>";
                 $i++;

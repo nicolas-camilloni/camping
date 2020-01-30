@@ -105,7 +105,6 @@
                               $resaverif = "SELECT * FROM reservations WHERE (debut BETWEEN '$startdate' AND '$enddate') OR (fin BETWEEN '$startdate' AND '$enddate')";
                               $queryverif = mysqli_query($cnx, $resaverif);
                               $resultatverif = mysqli_fetch_all($queryverif, MYSQLI_ASSOC);
-                              var_dump($resultatverif);
                               if(!empty($resultatverif)){
                                 $taille = sizeof($resultatverif);
                                 $i = 0;
