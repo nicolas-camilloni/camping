@@ -134,8 +134,14 @@ $dateselec = date_format($datejour, 'Y-m-d');
         </tbody>
 
     </table>
+    <section id="cbtnres">
+        <a href="reservation-form.php"><p>Réserver</p></a>
+    </section>
     </section>
     </main>
-    <?php include("footer.php"); ?>
+    <?php
+        include("footer.php");
+        mysqli_close($connexion);
+    ?>
 </body>
 </html>

@@ -134,7 +134,7 @@
             } 
             else 
             {
-                 echo "<p>Bonjour, veuillez vous connecter afin de pouvoir réserver une salle.</p><br />";
+                 echo "<p>Bonjour, veuillez vous connecter afin de pouvoir réserver.</p><br />";
                
             }
 

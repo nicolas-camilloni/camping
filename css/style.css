@@ -174,6 +174,28 @@ main {
     border-bottom: 4px solid #2cda93;
 }
 
+#adminpannel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+}
+
+#adminpannel p {
+    margin-left: 14px;
+    opacity: 0;
+}
+
+#adminpannel:hover p {
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+
+#adminpannel img {
+    height: 26px;
+    width: 26px;
+}
+
 /* ================= INDEX ================= */
 
 #cbvn h1 {
@@ -349,7 +371,15 @@ main {
     color: white;
     background-color: #202020;
     transform: scale(1.2);
-    transition: all 0.25s;
+    transition: all 0.25s ease-in-out;
+}
+
+#cbtnres a:not(:hover) {
+    border: 4px solid #202020;
+    background-color: white;
+    color: #202020;
+    transform: initial;
+    transition: all 0.25s ease-in-out;
 }
 
 /* ================= FORMULAIRES ================= */
@@ -385,7 +415,7 @@ main {
     color: lightcoral;
 }
 
-.form input[type="text"], .form input[type="password"], .form input[type="date"], select {
+.form input[type="text"], .form input[type="password"], .form input[type="date"], select, input[type="number"] {
     height: 60px;
     width: 274px;
     margin-bottom: 64px;
@@ -394,9 +424,15 @@ main {
     font-size: 20px;
 }
 
-.form input[type="text"]:focus, .form input[type="password"]:focus, .form input[type="date"]:focus, select:focus {
+.form input[type="text"]:focus, .form input[type="password"]:focus, .form input[type="date"]:focus, select:focus, input[type="number"]:focus {
     border: 4px solid #2cda93;
     outline: none;
+    transition: border 0.25s;
+}
+
+.form input[type="text"]:not(:focus), .form input[type="password"]:not(:focus), .form input[type="date"]:not(:focus), select:not(:focus), input[type="number"]:not(:focus) {
+    border: 4px solid #202020;
+    transition: border 0.25s;
 }
 
 .form label {
@@ -426,6 +462,13 @@ main {
     border: 4px solid #2cda93;
     color: #202020;
     transform: scale(1.2);
+    transition: all 0.25s;
+}
+
+.form input[type="submit"]:not(:hover) {
+    border: 4px solid #202020;
+    color: #202020;
+    transform: initial;
     transition: all 0.25s;
 }
 
@@ -492,12 +535,13 @@ input[type="checkbox"] {
 }
 
 #dateplanning input:hover {
-    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    transform: scale(1.4);
     cursor: pointer;
+    transition: all 0.25s ease-in-out;
 }
 
 #ctable {
-    height: 74vh;
+    height: 100%;
     margin: 100px 100px 100px 100px;
 }
 
@@ -505,6 +549,7 @@ input[type="checkbox"] {
     border: 2px solid black;
     border-collapse: collapse;
     width: 20%;
+    height: 14vh;
 }
 
 .reserve {
@@ -720,7 +765,6 @@ input[type="checkbox"] {
 	width: 100%;
 	height: 300px;
 	background-color: #545454;
-	background-image: url(img/bg4.png);
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

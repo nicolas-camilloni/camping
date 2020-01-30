@@ -214,7 +214,10 @@ date_default_timezone_set("Europe/Paris");
     ?>
 
     </main>
-    <?php include("footer.php"); ?>
+    <?php
+        include("footer.php");
+        mysqli_close($connexion);
+    ?>
 </body>
 
 </html>

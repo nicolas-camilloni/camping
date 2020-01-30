@@ -96,6 +96,8 @@ $resultatprix = mysqli_fetch_all($queryprix);
 
 <?php
     include("footer.php");
+    mysqli_close($cnx);
+
 ?>
 
 </body>
