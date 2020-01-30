@@ -99,7 +99,7 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
                                <input type="checkbox" name="option2" value="disco" checked/> Accès au Disco Club "Les girelles dansantes
                                <?php
                                }
-                               if($resultat[0]['option1'] == 0)
+                               if($resultat[0]['option3'] == 0)
                                {
                                ?>
                                <input type="checkbox" name="option3" value="activites" /> Accès aux activités (Yogo, Frisbee et Ski Nautique)
