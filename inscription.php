@@ -18,7 +18,7 @@
             if ( isset($_SESSION['login']) ) {
             ?>
                 <article class="dejaco">
-                    <p>ERREUR<br />
+                    <p class="pincorrect">ERREUR<br />
                     Vous êtes déjà connecté !</p>
                 </article>
             <?php
@@ -51,13 +51,13 @@
                     if (!empty($resultat3)) 
                     {
                     ?>
-                        <p>Ce Login est déjà prit</p>
+                        <p class="pincorrect">Cet identifiant est déjà pris</p>
                     <?php
                     }
                     elseif ($_POST["mdp"] != $_POST["mdpval"]) 
                     {
                     ?>
-                        <p>Attention ! Mot de passe différents</p>
+                        <p class="pincorrect">Attention ! Mot de passe différents</p>
                     <?php
                     }
                     else 
@@ -71,7 +71,12 @@
             ?>
         </section>
     </main>
-<?php include("footer.php"); ?>
+<?php
+    include("footer.php");
+    mysqli_close($connexion);
+
+?>
+
 </body>
 
 </html>
