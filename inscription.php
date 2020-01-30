@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php
+session_start();
+$_SESSION["num"] = 0;
+?>
 
 <!DOCTYPE html>
 

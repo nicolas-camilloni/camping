@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php
+session_start();
+$_SESSION["num"] = 0;
+?>
+
 <html>
 <head>
 <title>Campigo - Réservation</title>
@@ -127,7 +131,6 @@
                               $requete = "INSERT INTO reservations (lieu, type, sejour, debut, fin, option1, option2, option3, prix, id_utilisateur) VALUES ('$lieu', '$type', '$sejour', '$startdate', '$enddate', '$option1', '$option2', '$option3', '$prix', ".$resultat2[0]['id'].")";
                               $query = mysqli_query($cnx, $requete);
                                    echo "<p class=\"green\">Votre réservation a bien été enregistrée.</p>";
-
                               }   
                           } 
                     }

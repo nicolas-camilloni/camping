@@ -126,9 +126,7 @@ $dateselec = date_format($datejour, 'Y-m-d');
             echo "</tr>";
             
         }
-            
-            
-            
+
         ?>
         
         </tbody>

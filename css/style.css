@@ -196,6 +196,10 @@ main {
     width: 26px;
 }
 
+a {
+    color: unset;
+}
+
 /* ================= INDEX ================= */
 
 #cbvn h1 {
@@ -540,6 +544,10 @@ input[type="checkbox"] {
     transition: all 0.25s ease-in-out;
 }
 
+#dateplanning input:focus {
+    outline: none;
+}
+
 #ctable {
     height: 100%;
     margin: 100px 100px 100px 100px;
@@ -608,6 +616,25 @@ input[type="checkbox"] {
     font-family: "Pacifico";
     font-size: 44px;
     color: #2cda93;
+}
+
+#cresadmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0 100px 0;
+    height: 64vh;
+    overflow: auto;
+}
+
+#cresadmin h1 {
+    font-family: "Pacifico";
+    font-size: 44px;
+    color: #2cda93;
+}
+
+#cresadmin a:focus {
+    cursor: pointer;
 }
 
 .creslist {

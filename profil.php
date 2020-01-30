@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["num"] = 0;
 setlocale (LC_TIME, 'fr_FR.utf8','fra');
 date_default_timezone_set("Europe/Paris");
 ?>
@@ -109,6 +110,9 @@ date_default_timezone_set("Europe/Paris");
                                 </article>
                             </section>
                         </section>
+                        <article class="crestarif">
+                            <p>Lieu: <?php echo $reslieu;?></p>
+                        </article>
                         <article class="crestarif">
                             <p>Prix: <?php echo $resprix;?>€</p>
                         </article>

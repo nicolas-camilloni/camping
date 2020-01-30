@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$_SESSION["num"] = 0;
 
 if (isset($_GET["deco"])) {
     session_unset();

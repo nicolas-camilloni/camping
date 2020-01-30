@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    $_SESSION["num"] = 0; 
     $ismdpwrong = false;
     $isIDinconnu = false;
     $ischampremplis = false;
