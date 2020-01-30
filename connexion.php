@@ -59,17 +59,17 @@
                 <?php
                 if ( $ismdpwrong == true ) {
                 ?>
-                    <p class="pincorrect">Identifiant ou mot de passe incorrect.</p>
+                    <p>Identifiant ou mot de passe incorrect.</p>
                 <?php
                 }
                 elseif ( $isIDinconnu == true ) {
                 ?>
-                    <p class="pincorrect">Cet identifiant n'exsite pas.</p>
+                    <p>Cet identifiant n'exsite pas.</p>
                 <?php
                 }
                 elseif ( $ischampremplis == true ) {
                 ?>
-                    <p class="pincorrect">Merci de remplir tous les champs!</p>
+                    <p>Merci de remplir tous les champs!</p>
                 <?php
                 }
             }
@@ -77,7 +77,7 @@
             elseif ( isset($_SESSION['login']) ) {
             ?>
                 <article class="dejaco">
-                    <p class="pincorrect">ERREUR<br />
+                    <p>ERREUR<br />
                     Vous êtes déjà connecté !</p>
                 </article>
             <?php

@@ -13,7 +13,7 @@ if (isset($_GET["deco"])) {
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Campigo - Administration</title>
+    <title>Campigo - ADMIN PANEL</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,7 +24,6 @@ if (isset($_GET["deco"])) {
 
 <main>
     <img class="top" src="img/topindex.jpg">
-    <section class="cform">
 
     <?php  
 
@@ -42,29 +41,34 @@ if (isset($_GET["deco"])) {
 
               if ($_SESSION['login'] == "admin") {
     ?>
-            <article><h1>Administration</h1></article>
-                <form class="form" action="admin.php" method="post">
+                <form action="admin.php" method="post">
+                <section class="cform">
+                <?php echo "Tarif actuel de l'option 1: ".$tarifeo1actuel; ?>
                 <br>
                 <br>
-                <label>Tarif de l'option 1</label>
-                <input type="number" id="newtarifo1" name="newtarifo1" placeholder="Tarif actuel: <?php echo $tarifeo1actuel; ?>€/j">
+                <label>Modifier Tarif Option 1</label>
+                <input type="number" id="newtarifo1" name="newtarifo1">
+                <br>
+                <?php echo "Tarif actuel de l'option 2: ".$tarifeo2actuel; ?>
                 <br>
                 <br>
+                <label>Modifier Tarif Option 2</label>
+                <input type="number" id="newtarifo2" name="newtarifo2">
                 <br>
-                <label>Tarif de l'option 2</label>
-                <input type="number" id="newtarifo2" name="newtarifo2" placeholder="Tarif actuel: <?php echo $tarifeo2actuel; ?>€/j">
-                <br>
-                <br>
-                <br>
-                <label>Tarif de l'option 3</label>
-                <input type="number" id="newtarifo3" name="newtarifo3" placeholder="Tarif actuel: <?php echo $tarifeo3actuel; ?>€/j">
+                <?php echo "Tarif actuel de l'option 3: ".$tarifeo3actuel; ?>
                 <br>
                 <br>
+                <label>Modifier Tarif Option 3</label>
+                <input type="number" id="newtarifo3" name="newtarifo3">
                 <br>
-                <label>Tarif d'un emplacement</label>
-                <input type="number" id="newtarifemplacement" name="newtarifemplacement" placeholder="Tarif actuel: <?php echo $tarifeactuel; ?>€/j">
+                <?php echo "Tarif actuel d'1 emplacement: ".$tarifeactuel; ?>
+                <br>
+                <br>
+                <label>Modifier Tarif Emplacement</label>
+                <input type="number" id="newtarifemplacement" name="newtarifemplacement">
                 <br>
                 <input type="submit" name="modiftarifs" value="Modifier" />
+                </section>
                 </form>  
             <?php 
               if (isset($_POST['modiftarifs']) ) {
@@ -118,20 +122,18 @@ if (isset($_GET["deco"])) {
                 echo "</tbody></table>";
             }
             else {
-                echo "<p class=\"pincorrect\">Vous devez être connecté en tant qu'administrateur pour accéder à cette page.</p>";
+                echo "Vous n'avez pas acces a cette page.";
             }
         }
         else{
-            echo "<p class=\"pincorrect\">Vous devez être connecté en tant qu'administrateur pour accéder à cette page.</p>";
+            echo "Vous devez vous connecter en tant qu'admin pour acceder a cette page";
         }
         ?>
-    </section>
     
 </main>
 
 <?php
     include("footer.php");
-    mysqli_close($cnx);
 ?>
 
 </body>

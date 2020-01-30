@@ -1,22 +1,12 @@
 <header>
     <section id="topnav">
-        <a href="admin.php"><article id="campingstars">
+        <article id="campingstars">
             <p>CAMPING</p>
             <img src="img/stars.png" alt="etoiles">
             <img src="img/stars.png" alt="etoiles">
             <img src="img/stars.png" alt="etoiles">
             <img src="img/stars.png" alt="etoiles">
-            <?php
-            if ( isset($_SESSION['login']) && $_SESSION['login'] == "admin" ) {
-            ?>
-            <article id="adminpannel">
-                <img src="img/admin.png" alt="administrateur">
-                <p>Admin</p>
-            </article>
-            <?php
-            }
-            ?>
-        </article></a>
+        </article>
         <article id="campingcontact">
             <article id="tel">
                 <img src="img/tel.png">
@@ -28,7 +18,7 @@
             </article>
         </article>
     </section>
-    <a href="index.php" id="logocamping">
+    <a id="logocamping">
         <img src="img/logocamping.png" alt="logo">
     </a>
     <nav class="nav">
