@@ -4,7 +4,7 @@ session_start();
 
 $datejour = new DateTime("today");
 
-var_dump($datejour);
+// var_dump($datejour);
 
 if (!isset($_SESSION["num"])) {
     $_SESSION["num"] = 0;
@@ -18,20 +18,20 @@ if (isset($_POST["precedent"])) {
     $_SESSION["num"] -= 1;
 }
 
-echo $_SESSION["num"];
+// echo $_SESSION["num"];
 
 date_add($datejour, date_interval_create_from_date_string($_SESSION['num']." days"));
 
 $dateselec = date_format($datejour, 'Y-m-d');
 
-var_dump($dateselec);
+// var_dump($dateselec);
 ?>
 
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Camping</title>
+    <title>Camping - Planning</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -52,52 +52,53 @@ var_dump($dateselec);
 
     $connexion = mysqli_connect("localhost", "root", "", "camping");
     $requete = "SELECT login, type, lieu, DATE_FORMAT(debut, \"%Y-%m-%d\"), DATE_FORMAT(fin, \"%Y-%m-%d\"), option1, option2, option3, prix FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE \"$dateselec\" BETWEEN DATE_FORMAT(debut, \"%Y-%m-%d\") AND DATE_FORMAT(fin, \"%Y-%m-%d\")";
-    echo $requete;
+    // echo $requete;
     $query = mysqli_query($connexion, $requete);
-    var_dump($query);
+    // var_dump($query);
     $resultat = mysqli_fetch_all($query);
-    var_dump($resultat);
+    // var_dump($resultat);
 
     $capacite1 = 0;
     $capacite2 = 0;
     $capacite3 = 0;
 
     foreach ( $resultat as $key ) {
-        if ( $key[2] == "plage" ) {
-            if ( $key[1] == "tente" ) {
+        if ( $key[2] == "Plage" ) {
+            if ( $key[1] == "Tente" ) {
                 $capacite1 += 1;
             }
-            elseif ( $key[1] == "campingcar" ) {
+            elseif ( $key[1] == "Campingcar" ) {
                 $capacite1 += 2;
             }
         }
-        if ( $key[2] == "pins" ) {
-            if ( $key[1] == "tente" ) {
+        if ( $key[2] == "Pins" ) {
+            if ( $key[1] == "Tente" ) {
                 $capacite2 += 1;
             }
-            elseif ( $key[1] == "campingcar" ) {
+            elseif ( $key[1] == "Campingcar" ) {
                 $capacite2 += 2;
             }
         }
-        if ( $key[2] == "maquis" ) {
-            if ( $key[1] == "tente" ) {
+        if ( $key[2] == "Maquis" ) {
+            if ( $key[1] == "Tente" ) {
                 $capacite3 += 1;
             }
-            elseif ( $key[1] == "campingcar" ) {
+            elseif ( $key[1] == "Campingcar" ) {
                 $capacite3 += 2;
             }
         }
 
-        echo $capacite1;
-        echo $capacite2;
-        echo $capacite3;
+        // echo $capacite1;
+        // echo $capacite2;
+        // echo $capacite3;
 
         $capacite = [$capacite1, $capacite2, $capacite3];
-        var_dump($capacite);
+        // var_dump($capacite);
 
     }
 
     ?>
+    <section id="ctable">
     <table>
         <thead>
             <tr>
@@ -111,20 +112,15 @@ var_dump($dateselec);
         <?php
         for ( $emplacement = 1; $emplacement < 5; $emplacement++ ) {
             echo "<tr>";
-            echo "<td>Emplacement:".$emplacement."";
+            echo "<td id=\"caseemplacement\">Emplacement ".$emplacement."";
 
             for ( $lieu=0; $lieu < 3; $lieu++ ) { 
-            echo "<td>";
-
-                if ( $capacite[$lieu] >= $emplacement ) {
-                    echo "Reservé";
+                if ( !empty($resultat) && $capacite[$lieu] >= $emplacement ) {
+                    echo "<td class=\"reserve\">Reservé</td>";
                 }
-                
                 else{
-                echo "Dispo";
-                }
-            
-                echo "</td>";
+                    echo "<td class=\"dispo\">Disponible</td>";
+                }            
             }
             
             echo "</tr>";
@@ -138,6 +134,14 @@ var_dump($dateselec);
         </tbody>
 
     </table>
+    <section id="cbtnres">
+        <a href="reservation-form.php"><p>Réserver</p></a>
+    </section>
+    </section>
     </main>
+    <?php
+        include("footer.php");
+        mysqli_close($connexion);
+    ?>
 </body>
 </html>
