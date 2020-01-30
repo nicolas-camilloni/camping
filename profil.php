@@ -33,7 +33,7 @@ date_default_timezone_set("Europe/Paris");
                 <article><h1>Mon profil</h1></article>
                 <form class="form" action="profil.php" method="post">
                     <label> Identifiant </label>
-                    <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
+                    <input type="text" name="login" placeholder=<?php echo $resultat['login']; ?> />
                     <label> Nouveau mot de passe </label>
                     <input type="password" name="passwordx" />
                     <label> Confirmation du mot de passe </label>
@@ -42,6 +42,41 @@ date_default_timezone_set("Europe/Paris");
                     <br>
                     <input type="submit" name="modifier" value="Modifier" />
                 </form>
+
+                <?php
+                if (isset($_POST['modifier']) ) 
+                    {
+                         if ($_POST["passwordx"] != $_POST["passwordconf"]) 
+                         {
+                             ?>
+                            <p class="pincorrect">Attention ! Mot de passe différents</p>
+                        <?php
+                        } 
+                        elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
+                            $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
+                            $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
+                            $query2 = mysqli_query($connexion, $updatepwd);
+                            header('Location:profil.php');
+                        }
+                        $login = $_POST["login"];
+                        $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                        $req3 = mysqli_query($connexion, $req);
+                        $veriflog = mysqli_fetch_all($req3);
+                            if(!empty($veriflog))
+                            {
+                                ?>
+                                <p class="pincorrect">Login deja utilisé, requete refusé.<br /></p>
+                                <?php
+                            }
+                        if(empty($veriflog) && !empty($_POST['login']))
+                            {
+                                $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "' WHERE id = '" . $resultat['id'] . "'";
+                                $querylog = mysqli_query($connexion, $updatelog);
+                                $_SESSION['login']=$_POST['login'];
+                                header("Location:profil.php");
+                            }
+                    }
+                    ?>
         </section>
         <section id="cres">
                 <article><h1>Mes réservations</h1></article>
@@ -90,11 +125,11 @@ date_default_timezone_set("Europe/Paris");
                         <section class="cdateres">
                             <section class="blocdate">
                                 <article class="blocdatetop">
-                                    <p class="jour"><?php echo $resdebutjour; ?></p>
+                                    <p class="jour"><?php echo $resdebutjour;?></p>
                                 </article>
                                 <article class="blocdatebot">
-                                    <p class="chiffrejour"><?php echo $resdebutcjour; ?></p>
-                                    <p class="mois"><?php echo $resdebutmois; ?></p>
+                                    <p class="chiffrejour"><?php echo $resdebutcjour;?></p>
+                                    <p class="mois"><?php echo $resdebutmois;?></p>
                                 </article>
                             </section>
                             <article class="fleche">
@@ -102,11 +137,11 @@ date_default_timezone_set("Europe/Paris");
                             </article>
                             <section class="blocdate">
                                 <article class="blocdatetop">
-                                    <p class="jour"><?php echo $resfinjour; ?></p>
+                                    <p class="jour"><?php echo $resfinjour;?></p>
                                 </article>
                                 <article class="blocdatebot">
-                                    <p class="chiffrejour"><?php echo $resfincjour; ?></p>
-                                    <p class="mois"><?php echo $resfinmois; ?></p>
+                                    <p class="chiffrejour"><?php echo $resfincjour;?></p>
+                                    <p class="mois"><?php echo $resfinmois;?></p>
                                 </article>
                             </section>
                         </section>
@@ -168,46 +203,14 @@ date_default_timezone_set("Europe/Paris");
                         </article>
                     </section>
                 </a>
+            
 
                 <?php
                 }
 
-                    if (isset($_POST['modifier']) ) 
-                    {
-                         if ($_POST["passwordx"] != $_POST["passwordconf"]) 
-                         {
-                             ?>
-                            <p>Attention ! Mot de passe différents</p>
-                        <?php
-                        } 
-                        elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
-                            $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
-                            $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
-                            $query2 = mysqli_query($connexion, $updatepwd);
-                            header('Location:profil.php');
-                        }
-                        $login = $_POST["login"];
-                        $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
-                        $req3 = mysqli_query($connexion, $req);
-                        $veriflog = mysqli_fetch_all($req3);
-                            if(!empty($veriflog))
-                            {
-                                ?>
-                                <p>Login deja utilisé, requete refusé.<br /></p>
-                                <?php
-                            }
-                        if(empty($veriflog))
-                            {
-                                $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "' WHERE id = '" . $resultat['id'] . "'";
-                                $querylog = mysqli_query($connexion, $updatelog);
-                                $_SESSION['login']=$_POST['login'];
-                                header("Location:profil.php");
-                            }
-                    }
-                    ?>
+?>
         </section>
-    <?php
-
+<?php
     } 
     else 
     {
@@ -215,13 +218,11 @@ date_default_timezone_set("Europe/Paris");
             <p>Veuillez vous connecter pour accéder à votre page !</p>
         <?php
     }
-    ?>
-
+?>
     </main>
-    <?php
+<?php
         include("footer.php");
         mysqli_close($connexion);
-    ?>
+?>
 </body>
-
 </html>

@@ -21,42 +21,13 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
 <?php include("header.php"); ?>
 <main>
 <img class="top" src="img/topindex.jpg">
-    <section>
+    <section class="cform">
+    <article><h1>Modifier la réservation</h1></article>
       <?php  
-      if (!empty($_SESSION['login'])) 
+      if (!empty($_SESSION['login']) && $_SESSION['login'] == "admin" ) 
       {
-          if ($_SESSION['login'] == "admin") {
-          $i = 0;
-          echo "<table border>";
-          echo "<thead><tr>";
-          foreach ($resultat[$taille] as $key => $value) 
-          {
-            echo "<th>{$key}</th>";
-          }
-          echo "</tr></thead>";
-          echo "<tbody>";
-          while ($i <= $taille) 
-          {
-            echo "<tr>";
-            foreach ($resultat[$i] as $key => $value) 
-            {
-              echo "<td>{$value}</td>";
-            }
-            echo "</tr>";
-            $i++;
-          }
-          echo "</tbody></table>";
-          }
-          else{
-            echo "Vous n'avez pas acces a cette page";
-          }
-        }
-         else{
-            echo "Vous n'avez pas acces a cette page";
-          }
       ?>
-
-                       <form class="form_site" action="reservation.php?idresa=<?php echo $idresa ?>" method="post" enctype="multipart/form-data">
+      <form class="form" action="reservation.php?idresa=<?php echo $idresa ?>" method="post" enctype="multipart/form-data">
                             <section class="cform">
                                <label for="text"><b>Lieu</b></label>
                                <select name="lieu">
@@ -73,45 +44,47 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
                                <option value="Campingcar">Camping Car</option>
                                </select>
                                <br>
+                               <section id="coptionsform">
                                <label for="text"><b>Options</b></label>
                                <?php 
                                if($resultat[0]['option1'] == 0)
                                {
                                ?>
-                               <input type="checkbox" name="option1" value="borne" /> Accès borne électrique
+                              <article class="coptionsformcase"><input type="checkbox" name="option1" value="borne" /><p>Accès borne électrique</p></article>
                                <br>
                                <?php
                                }
                                else{
                                ?>
-                               <input type="checkbox" name="option1" value="borne" checked/> Accès borne électrique
+                              <article class="coptionsformcase"><input type="checkbox" name="option1" value="borne" checked/><p>Accès borne électrique</p></article>
                                <?php
                                }
                                if($resultat[0]['option2'] == 0)
                                {
                                ?>
-                               <input type="checkbox" name="option2" value="disco" /> Accès au Disco Club "Les girelles dansantes
+                              <article class="coptionsformcase"><input type="checkbox" name="option2" value="disco" /><p>Accès au Disco Club "Les girelles dansantes</p></article>
                                <br>
                                <?php
                                }
                                else{
                                ?>
-                               <input type="checkbox" name="option2" value="disco" checked/> Accès au Disco Club "Les girelles dansantes
+                              <article class="coptionsformcase"><input type="checkbox" name="option2" value="disco" checked/><p>Accès au Disco Club "Les girelles dansantes</p></article>
                                <?php
                                }
                                if($resultat[0]['option3'] == 0)
                                {
                                ?>
-                               <input type="checkbox" name="option3" value="activites" /> Accès aux activités (Yogo, Frisbee et Ski Nautique)
+                              <article class="coptionsformcase"><input type="checkbox" name="option3" value="activites" /><p>Accès aux activités (Yogo, Frisbee et Ski Nautique)</p></article>
                                <br>
                                <?php
                                }
                                else{
                                ?>
-                               <input type="checkbox" name="option3" value="activites" checked/> Accès aux activités (Yogo, Frisbee et Ski Nautique)
+                              <article class="coptionsformcase"><input type="checkbox" name="option3" value="activites" checked/><p>Accès aux activités (Yogo, Frisbee et Ski Nautique)</p></article>
                                <?php
                                }
                                ?>
+                               </section>
                                <br>
                                <label for="datedebut"><b>Date debut</b></label>
                                <input type="date" value="<?php echo "$datedebutformat" ?>" name="datedebut" required> 
@@ -184,13 +157,12 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
                                 }
                               }
                               if ($capacite < $capaciteneed) {
-                                   echo "Plus de Place";
+                                echo "<p class=\"pincorrect\">Plus de place disponible à cette date.</p>";
                               }
                               else{
                               $update = "UPDATE reservations SET lieu='$lieu', type='$type', sejour='$sejour',debut='$datedebut', fin='$datefin',option1='$option1',option2='$option2', option3='$option3', prix='$prix' WHERE id = $idresa";
-                               header("Location:reservation.php?idresa=".$idresa."");
+                              header("Location:reservation.php?idresa=".$idresa."");
                               $updatequery = mysqli_query($cnx, $update);
-                              echo "$update";
                               }   
                           } 
                   
@@ -198,6 +170,16 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
             mysqli_close($cnx);
        ?>
     </section>
+    <?php
+        }
+        else {
+            ?>
+            <p class="pincorrect">Il faut être connecté en tant qu'administrateur afin de pouvoir accéder à cette page.</p>
+            <?php
+        }
+    ?>
+
+                       
 </section>
 </main>
  <?php include("footer.php"); ?>

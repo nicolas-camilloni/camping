@@ -511,6 +511,10 @@ input[type="checkbox"] {
     width: 36px;
 }
 
+.coptionsformcase p {
+    margin: 0;
+}
+
 /* ================= PLANNING ================= */
 
 #dateplanning {
