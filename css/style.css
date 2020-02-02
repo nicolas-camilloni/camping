@@ -1,0 +1,928 @@
+/* ================= GENERAL ================= */
+
+@font-face {
+	font-family: "pacifico";
+	font-style: normal;
+	font-weight: normal;
+	src: local('pacifico'), url('../fonts/Pacifico.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Raleway-Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local('Raleway-Regular'), url('../fonts/Raleway-Regular.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+}
+
+/* ================= HEADER ================= */
+
+#topnav {
+    height: 50px;
+    width: 100%;
+    background: #2cda93;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#campingstars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    margin-left: 100px;
+    /* background-color: aqua; */
+}
+
+#campingcontact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    margin-right: 100px;
+    /* background-color: aqua; */
+}
+
+#campingcontact p {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+#adresse {
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#campingcontact img {
+    width: 20px;
+    height: 20px;
+    padding-right: 15px;
+}
+
+#campingstars p {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#campingstars img {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+}
+
+header nav {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+#navleft {
+    min-width: 34%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#navright {
+    min-width: 34%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logocamping {
+    height: 150px;
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    margin-top: -34px;
+    margin-left: -210px;
+    /* background-color: royalblue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav p {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
+header nav p:hover {
+    color: #2cda93;
+}
+
+header nav a {
+    text-decoration: none;
+}
+
+#logocamping img {
+    height: 180px;
+    width: 180px;
+}
+
+header {
+    z-index: 9999;
+    position: relative;
+    box-shadow: 0 2px 10px #000;
+}
+
+header button {
+    background-color: transparent;
+    border: none;
+}
+
+main {
+    top: 0;
+    margin-top: -100px;
+    z-index: 100;
+    position: relative;
+}
+
+.top {
+    width: 100%;
+    border-bottom: 4px solid #2cda93;
+}
+
+#adminpannel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+}
+
+#adminpannel p {
+    margin-left: 14px;
+    opacity: 0;
+}
+
+#adminpannel:hover p {
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+
+#adminpannel img {
+    height: 26px;
+    width: 26px;
+}
+
+a {
+    color: unset;
+}
+
+/* ================= INDEX ================= */
+
+#cbvn h1 {
+    font-family: "pacifico";
+    font-size: 36px;
+    margin: 0;
+}
+
+#cbvn p {
+    width: 60%;
+    font-size: 18px;
+    color: black;
+    margin: 40px;
+}
+
+#cbvn {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #2cda93;
+    margin: 80px 0 80px 0;
+}
+
+#ctarif {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    padding: 34px 0 100px 0;
+    background-color: #2cda93;
+}
+
+#tarif {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 64%;
+    width: 100%;
+}
+
+.ctabletarif1 {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    height: 100%;
+    background-color: blue;
+    border: 4px solid #202020;
+    margin-right: 80px;
+}
+
+.ctabletarif2 {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    height: 100%;
+    background-color: blue;
+    border: 4px solid #202020;
+    margin-left: 80px;
+}
+
+#titretarif {
+    height: 160px;
+    background-color: #2cda93;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#toptarif {
+    height: 180px;
+    /* background-color: #2cda93; */
+    font-size: 42px;
+    color: white;
+    font-family: "Pacifico";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.casetarif {
+    height: 120px;
+    background-color: white;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #202020;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.casetarifnoborder {
+    height: 120px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #202020;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.green {
+    color: #2cda93;
+}
+
+.orange {
+    color: coral;
+}
+
+#optioncase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Pacifico";
+    font-size: 40px;
+    color: white;
+    height: 80px;
+    background-color: #2cda93;
+}
+
+#imgtente {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    margin-top: -50px;
+    border-radius: 50%;
+    border: 4px solid #202020;
+}
+
+#titretarif h1 {
+    position: relative;
+    top: 50%;
+    margin: 0;
+    font-family: "Pacifico";
+    color: white;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+#cbtnres {
+    margin-top: 100px;
+    height: 80px;
+    /* background-color: #202020; */
+    display: flex;
+    justify-content: center;
+}
+
+#cbtnres a {
+    height: 100%;
+    width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 4px solid #202020;
+    border-radius: 50px;
+    color: #202020;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: white;
+}
+
+#cbtnres a:hover {
+    border: 4px solid white;
+    color: white;
+    background-color: #202020;
+    transform: scale(1.2);
+    transition: all 0.25s ease-in-out;
+}
+
+#cbtnres a:not(:hover) {
+    border: 4px solid #202020;
+    background-color: white;
+    color: #202020;
+    transform: initial;
+    transition: all 0.25s ease-in-out;
+}
+
+/* ================= FORMULAIRES ================= */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0 100px 0;
+}
+
+.cform h1 {
+    font-family: "Pacifico";
+    font-size: 44px;
+    color: #2cda93;
+}
+
+.cform p {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 64px;
+    font-weight: bold;
+}
+
+.pincorrect {
+    color: lightcoral;
+}
+
+.form input[type="text"], .form input[type="password"], .form input[type="date"], select, input[type="number"] {
+    height: 60px;
+    width: 274px;
+    margin-bottom: 64px;
+    border: 4px solid #202020;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.form input[type="text"]:focus, .form input[type="password"]:focus, .form input[type="date"]:focus, select:focus, input[type="number"]:focus {
+    border: 4px solid #2cda93;
+    outline: none;
+    transition: border 0.25s;
+}
+
+.form input[type="text"]:not(:focus), .form input[type="password"]:not(:focus), .form input[type="date"]:not(:focus), select:not(:focus), input[type="number"]:not(:focus) {
+    border: 4px solid #202020;
+    transition: border 0.25s;
+}
+
+.form label {
+    margin-bottom: 22px;
+    font-size: 24px;
+    color: #202020;
+    font-family: "Raleway-Regular";
+}
+
+.form input[type="submit"] {
+    height: 74px;
+    width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 4px solid #202020;
+    border-radius: 50px;
+    color: #202020;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: white;
+}
+
+.form input[type="submit"]:hover {
+    border: 4px solid #2cda93;
+    color: #202020;
+    transform: scale(1.2);
+    transition: all 0.25s;
+}
+
+.form input[type="submit"]:not(:hover) {
+    border: 4px solid #202020;
+    color: #202020;
+    transform: initial;
+    transition: all 0.25s;
+}
+
+.dejaco p {
+    font-size: 24px;
+    font-family: "Raleway-Regular";
+    text-align: center;
+}
+
+#coptionsform {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 320px;
+    margin-bottom: 80px;
+}
+
+.coptionsformcase {
+    display: flex;
+    flex-direction: row;
+}
+
+#coptionsform p {
+    margin: 0 0 0 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-weight: normal;
+    font-family: "Raleway-Regular";
+}
+
+input[type="checkbox"] {
+    height: 36px;
+    width: 36px;
+}
+
+.coptionsformcase p {
+    margin: 0;
+}
+
+/* ================= PLANNING ================= */
+
+#dateplanning {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 0 0;
+    font-size: 46px;
+}
+
+#dateplanning p {
+    margin: 0 50px 0 50px;
+    font-family: "Pacifico";
+    line-height: 44px;
+}
+
+#dateplanning input {
+    font-size: 44px;
+    background-color: transparent;
+    border: none;
+    color: #2cda93;
+    margin: 0;
+    line-height: 44px;
+    font-family: "Pacifico";
+}
+
+#dateplanning input:hover {
+    transform: scale(1.4);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+#dateplanning input:focus {
+    outline: none;
+}
+
+#ctable {
+    height: 100%;
+    margin: 100px 100px 100px 100px;
+}
+
+#ctable table td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 20%;
+    height: 14vh;
+}
+
+.reserve {
+    background-color: #2cda93;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dispo {
+    background-color: white;
+    color: #202020;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#ctable table {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Pacifico";
+}
+
+#ctable table th {
+    border: 2px solid black;
+    border-collapse: collapse;
+    height: 100px;
+    background-color: #202020;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Pacifico";
+}
+
+#caseemplacement {
+    width: 20%;
+    background-color: #202020;
+    color: white;
+}
+
+/* ================= PROFIL ================= */
+
+#cres {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0 100px 0;
+}
+
+#cres h1 {
+    font-family: "Pacifico";
+    font-size: 44px;
+    color: #2cda93;
+}
+
+#cresadmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0 100px 0;
+    height: 64vh;
+    overflow: auto;
+}
+
+#cresadmin h1 {
+    font-family: "Pacifico";
+    font-size: 44px;
+    color: #2cda93;
+}
+
+#cresadmin a:focus {
+    cursor: pointer;
+}
+
+.creslist {
+    height: 22vh;
+    width: 64%;
+    /* background-color: orange; */
+    box-shadow: 0 2px 10px #000;
+    margin-bottom: 40px;
+}
+
+.creslist:hover {
+    transition: all 0.25s;
+    background-color: whitesmoke;
+}
+
+.creslist:not(:hover) {
+    transition: all 0.25s;
+    background-color: none;
+}
+
+.restop {
+    height: 44%;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    font-family: "Raleway-Regular";
+}
+
+.restop p {
+    margin: 0;
+}
+
+.cdateres {
+    /* background-color: orangered; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.blocdate {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: orchid; */
+}
+
+.fleche {
+    height: 100%;
+    width: 18%;
+}
+
+#imgfleche {
+    height: 100%;
+    width: 100%;
+}
+
+.blocdatetop {
+    width: 100%;
+    /* background-color: peru; */
+    display: flex;
+    align-items: center;
+}
+
+.blocdatebot {
+    width: 100%;
+    /* background-color: powderblue; */
+    display: flex;
+    align-items: center;
+}
+
+.resbot {
+    height: 56%;
+    width: 100%;
+    /* background-color: grey; */
+    display: flex;
+    align-items: center;
+}
+
+.jour {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.chiffrejour {
+    font-size: 40px;
+    color: #2cda93;
+}
+
+.mois {
+    font-size: 34px;
+    font-weight: bold;
+    padding-left: 6px;
+}
+
+.crestarif {
+    /* background-color: thistle; */
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+.imgres {
+    height: 64px;
+    width: 64px;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid #202020;
+}
+
+.cimgres {
+    margin-left: 40px;
+}
+
+.coptionsres {
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    font-family: "Raleway-Regular";
+}
+
+.coptionsres article {
+    display: flex;
+    align-items: center;
+
+}
+
+.coptionsres article p {
+    margin: 0;
+    font-size: 20px;
+}
+
+.coptionsres article span {
+    margin-left: 8px;
+    font-size: 24px;
+}
+
+.csejourres {
+    margin-left: 40px;
+}
+
+.csejourres p {
+    font-size: 20px;
+    font-family: "Raleway-Regular";
+}
+
+/* ================= FOOTER ================= */
+
+#containerfooter {
+	width: 100%;
+	height: 300px;
+	background-color: #545454;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+    font-family: sans-serif;
+    border-top: 4px solid #2cda93;
+}
+
+#cfooterlogo {
+/*	background-color: blue;*/
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logocampingfooter {
+    height: 200px;
+    width: 200px;
+}
+
+#cfootermenu {
+	width: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-right: 2px solid #202020;
+	height: 250px;
+	min-width: 200px;
+}
+
+#titremenu {
+	color: #2cda93;
+	font-size: 24px;
+}
+
+#footermenu ul li {
+	color: white;
+	list-style: none;
+	font-size: 20px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#footermenu ul li:hover {
+	color: #2cda93;
+}
+
+#cfooterreseaux {
+/*	background-color: cyan;*/
+	width: 30%;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-width: 200px;
+}
+
+#footerreseaux {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#boutonreseaux {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 10px;
+	padding-left: 10px;
+}
+
+#tableaufooter table tbody tr td {
+	color: white;
+}
+
+#footertwitter {
+	background-image: url(../img/Twitter.png);
+	height: 40px;
+	width: 40px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#footeryoutube {
+	background-image: url(../img/Youtube.png);
+	height: 40px;
+	width: 40px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#footerfacebook {
+	background-image: url(../img/Facebook.png);
+	height: 40px;
+	width: 40px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#footertwitter:hover {
+	background-image: url(../img/Twitter2.png);
+}
+
+#footeryoutube:hover {
+	background-image: url(../img/Youtube2.png);
+}
+
+#footerfacebook:hover {
+	background-image: url(../img/Facebook2.png);
+}
+
+#containercopyright {
+	background-color: #202020;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#copyright {
+	color: white;
+	display: flex;
+}
