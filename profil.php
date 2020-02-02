@@ -180,7 +180,7 @@ date_default_timezone_set("Europe/Paris");
                             $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
                             $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
                             $query2 = mysqli_query($connexion, $updatepwd);
-                            header('Location:profil.php');
+                             
                         }
                         $login = $_POST["login"];
                         $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
@@ -197,8 +197,9 @@ date_default_timezone_set("Europe/Paris");
                                 $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "' WHERE id = '" . $resultat['id'] . "'";
                                 $querylog = mysqli_query($connexion, $updatelog);
                                 $_SESSION['login']=$_POST['login'];
-                                header("Location:profil.php");
+                                
                             }
+                    header("Location:profil.php");
                     }
                     ?>
         </section>
