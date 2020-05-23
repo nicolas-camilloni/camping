@@ -50,7 +50,7 @@ $dateselec = date_format($datejour, 'Y-m-d');
 
     <?php
 
-    $connexion = mysqli_connect("localhost", "root", "", "camping");
+    $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
     $requete = "SELECT login, type, lieu, DATE_FORMAT(debut, \"%Y-%m-%d\"), DATE_FORMAT(fin, \"%Y-%m-%d\"), option1, option2, option3, prix FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE \"$dateselec\" BETWEEN DATE_FORMAT(debut, \"%Y-%m-%d\") AND DATE_FORMAT(fin, \"%Y-%m-%d\")";
     // echo $requete;
     $query = mysqli_query($connexion, $requete);

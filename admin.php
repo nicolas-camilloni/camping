@@ -31,7 +31,7 @@ if (isset($_GET["deco"])) {
 
     <?php  
 
-           $cnx = mysqli_connect("localhost", "root", "", "camping");
+           $cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
            $requetetarifs = "SELECT * FROM tarifs";
            $querytarifs = mysqli_query($cnx, $requetetarifs);
            $resultattarifs = mysqli_fetch_all($querytarifs, MYSQLI_ASSOC);
@@ -115,9 +115,8 @@ if (isset($_GET["deco"])) {
 
                     $resdebutjour = strtoupper(strftime("%A", strtotime($resdebut)));
                     // echo $resdebutjour;
-                    $resdebutmois = strtoupper(strftime("%b", strtotime($resdebut)));
+                    $resdebutmois = mb_strtoupper(strftime("%b", strtotime($resdebut)));
                     $resdebutmois = substr($resdebutmois,0,-1);
-                    $resdebutmois = utf8_encode($resdebutmois);
                     // echo $resdebutmois;
                     $resdebutcjour = strtoupper(strftime("%d", strtotime($resdebut)));
                     // echo $resdebutcjour;
@@ -126,9 +125,8 @@ if (isset($_GET["deco"])) {
 
                     $resfinjour = strtoupper(strftime("%A", strtotime($resfin)));
                     // echo $resfinjour;
-                    $resfinmois = strtoupper(strftime("%b", strtotime($resfin)));
+                    $resfinmois = mb_strtoupper(strftime("%b", strtotime($resfin)));
                     $resfinmois = substr($resfinmois,0,-1);
-                    $resfinmois = utf8_encode($resfinmois);
                     // echo $resfinmois;
                     $resfincjour = strtoupper(strftime("%d", strtotime($resfin)));
                     // echo $resfincjour;

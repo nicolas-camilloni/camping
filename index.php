@@ -9,7 +9,7 @@ if (isset($_GET["deco"])) {
     header('Location:index.php');
 }
 
-$cnx = mysqli_connect("localhost", "root", "", "camping");
+$cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
 $requeteprix = "SELECT * FROM tarifs";
 $queryprix = mysqli_query($cnx, $requeteprix);
 $resultatprix = mysqli_fetch_all($queryprix);

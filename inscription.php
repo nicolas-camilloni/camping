@@ -46,7 +46,7 @@ $_SESSION["num"] = 0;
                 {
                     $login = $_POST["login"];
                     $mdp = password_hash($_POST["mdp"], PASSWORD_BCRYPT, array('cost' => 12));
-                    $connexion = mysqli_connect("localhost", "root", "", "camping");
+                    $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
                     $requete3 = "SELECT login FROM utilisateurs WHERE login = '$login'";
                     $query3 = mysqli_query($connexion, $requete3);
                     $resultat3 = mysqli_fetch_all($query3);

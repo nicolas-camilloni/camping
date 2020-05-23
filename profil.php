@@ -23,7 +23,7 @@ date_default_timezone_set("Europe/Paris");
             <?php
             if (isset($_SESSION['login']))
             {
-                $connexion = mysqli_connect("localhost", "root", "", "camping");
+                $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
                 $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'";
                 $query = mysqli_query($connexion, $requete);
                 $resultat = mysqli_fetch_assoc($query);
@@ -96,9 +96,8 @@ date_default_timezone_set("Europe/Paris");
 
                     $resdebutjour = strtoupper(strftime("%A", strtotime($resdebut)));
                     // echo $resdebutjour;
-                    $resdebutmois = strtoupper(strftime("%b", strtotime($resdebut)));
+                    $resdebutmois = mb_strtoupper(strftime("%b", strtotime($resdebut)));
                     $resdebutmois = substr($resdebutmois,0,-1);
-                    $resdebutmois = utf8_encode($resdebutmois);
                     // echo $resdebutmois;
                     $resdebutcjour = strtoupper(strftime("%d", strtotime($resdebut)));
                     // echo $resdebutcjour;
@@ -107,9 +106,8 @@ date_default_timezone_set("Europe/Paris");
 
                     $resfinjour = strtoupper(strftime("%A", strtotime($resfin)));
                     // echo $resfinjour;
-                    $resfinmois = strtoupper(strftime("%b", strtotime($resfin)));
+                    $resfinmois = mb_strtoupper(strftime("%b", strtotime($resfin)));
                     $resfinmois = substr($resfinmois,0,-1);
-                    $resfinmois = utf8_encode($resfinmois);
                     // echo $resfinmois;
                     $resfincjour = strtoupper(strftime("%d", strtotime($resfin)));
                     // echo $resfincjour;

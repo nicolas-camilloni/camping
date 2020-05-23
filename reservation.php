@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-$cnx = mysqli_connect("localhost", "root", "", "camping");
+$cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
 if ( isset($_GET["idresa"]) ) {
 $idresa = $_GET["idresa"];
 $requete1 = "SELECT lieu,type,sejour,debut,fin,option1,option2,option3,prix FROM reservations WHERE id=$idresa";

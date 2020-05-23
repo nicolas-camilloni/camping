@@ -15,7 +15,7 @@ $_SESSION["num"] = 0;
 <section class="cform">
 	 <?php
             date_default_timezone_set('Europe/Paris');
-            $cnx = mysqli_connect("localhost", "root", "", "camping");
+            $cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
             if (isset($_SESSION["login"])) 
             {
                     $requete2 = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
