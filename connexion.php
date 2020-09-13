@@ -7,8 +7,8 @@
     $ischampremplis = false;
 
     if ( isset($_POST['connexion']) == true && isset($_POST['login']) && strlen($_POST['login']) != 0 && isset($_POST['password']) && strlen($_POST['password']) != 0 ) {
-        $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
-        $requete = "SELECT * FROM utilisateurs WHERE login ='".$_POST['login']."'";
+        $connexion = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+        $requete = "SELECT * FROM camping_utilisateurs WHERE login ='".$_POST['login']."'";
         $query = mysqli_query($connexion, $requete);
         $resultat = mysqli_fetch_all($query);
 

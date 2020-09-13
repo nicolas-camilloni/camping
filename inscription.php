@@ -46,8 +46,8 @@ $_SESSION["num"] = 0;
                 {
                     $login = $_POST["login"];
                     $mdp = password_hash($_POST["mdp"], PASSWORD_BCRYPT, array('cost' => 12));
-                    $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
-                    $requete3 = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                    $connexion = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+                    $requete3 = "SELECT login FROM camping_utilisateurs WHERE login = '$login'";
                     $query3 = mysqli_query($connexion, $requete3);
                     $resultat3 = mysqli_fetch_all($query3);
 
@@ -65,7 +65,7 @@ $_SESSION["num"] = 0;
                     }
                     else 
                     {
-                        $requete = "INSERT INTO utilisateurs (login, password) VALUES ('$login','$mdp')";
+                        $requete = "INSERT INTO camping_utilisateurs (login, password) VALUES ('$login','$mdp')";
                         $query = mysqli_query($connexion, $requete);
                         header('Location:connexion.php');
                     }

@@ -15,14 +15,14 @@ $_SESSION["num"] = 0;
 <section class="cform">
 	 <?php
             date_default_timezone_set('Europe/Paris');
-            $cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
+            $cnx = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
             if (isset($_SESSION["login"])) 
             {
-                    $requete2 = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
+                    $requete2 = "SELECT * FROM camping_utilisateurs WHERE login='".$_SESSION['login']."'";
                     $query2 = mysqli_query($cnx, $requete2);
                     $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
 
-                    $requeteprix = "SELECT * FROM tarifs";
+                    $requeteprix = "SELECT * FROM camping_tarifs";
                     $queryprix = mysqli_query($cnx, $requeteprix);
                     $resultatprix = mysqli_fetch_all($queryprix);
             ?>
@@ -56,7 +56,7 @@ $_SESSION["num"] = 0;
                    <input type="submit" value="Réserver" name="valider" />
                    </form>
             <?php
-                    $requetetarifs = "SELECT * FROM tarifs";
+                    $requetetarifs = "SELECT * FROM camping_tarifs";
                     $querytarifs = mysqli_query($cnx, $requetetarifs);
                     $resultattarifs = mysqli_fetch_all($querytarifs, MYSQLI_ASSOC);
                     if ( isset($_POST["valider"]) )
@@ -107,7 +107,7 @@ $_SESSION["num"] = 0;
                               echo "Vous ne pouvez pas choisir une date de fin antérieur a la date de debut";
                           }
                           else{
-                              $resaverif = "SELECT * FROM reservations WHERE (debut BETWEEN '$startdate' AND '$enddate') OR (fin BETWEEN '$startdate' AND '$enddate')";
+                              $resaverif = "SELECT * FROM camping_reservations WHERE (debut BETWEEN '$startdate' AND '$enddate') OR (fin BETWEEN '$startdate' AND '$enddate')";
                               $queryverif = mysqli_query($cnx, $resaverif);
                               $resultatverif = mysqli_fetch_all($queryverif, MYSQLI_ASSOC);
                               // var_dump($resultatverif);
@@ -128,7 +128,7 @@ $_SESSION["num"] = 0;
                                    echo "<p class=\"pincorrect\">Plus de place disponible à cette date.</p>";
                               }
                               else{
-                              $requete = "INSERT INTO reservations (lieu, type, sejour, debut, fin, option1, option2, option3, prix, id_utilisateur) VALUES ('$lieu', '$type', '$sejour', '$startdate', '$enddate', '$option1', '$option2', '$option3', '$prix', ".$resultat2[0]['id'].")";
+                              $requete = "INSERT INTO camping_reservations (lieu, type, sejour, debut, fin, option1, option2, option3, prix, id_utilisateur) VALUES ('$lieu', '$type', '$sejour', '$startdate', '$enddate', '$option1', '$option2', '$option3', '$prix', ".$resultat2[0]['id'].")";
                               $query = mysqli_query($cnx, $requete);
                                    echo "<p class=\"green\">Votre réservation a bien été enregistrée.</p>";
                               }   

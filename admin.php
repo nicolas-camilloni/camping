@@ -31,8 +31,8 @@ if (isset($_GET["deco"])) {
 
     <?php  
 
-           $cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
-           $requetetarifs = "SELECT * FROM tarifs";
+            $cnx = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+           $requetetarifs = "SELECT * FROM camping_tarifs";
            $querytarifs = mysqli_query($cnx, $requetetarifs);
            $resultattarifs = mysqli_fetch_all($querytarifs, MYSQLI_ASSOC);
            $tarifeactuel = $resultattarifs[0]['tarifemplacement'];
@@ -88,7 +88,7 @@ if (isset($_GET["deco"])) {
                    if(!empty($_POST['newtarifemplacement'])){
                     $newtarifemplacement = $_POST['newtarifemplacement'];
                    }
-                    $changetarifs = "UPDATE tarifs SET tarifo1 ='$newtarifo1', tarifo2 ='$newtarifo2', tarifo3 ='$newtarifo3', tarifemplacement ='$newtarifemplacement' ";
+                    $changetarifs = "UPDATE camping_tarifs SET tarifo1 ='$newtarifo1', tarifo2 ='$newtarifo2', tarifo3 ='$newtarifo3', tarifemplacement ='$newtarifemplacement' ";
                     $querychangetarifs = mysqli_query($cnx, $changetarifs);
                     header('Location:admin.php');
                 }
@@ -100,7 +100,7 @@ if (isset($_GET["deco"])) {
                 <article><h1>Modifier une réservation</h1></article>
                 <?php
 
-                $requeteres = "SELECT reservations.id,lieu,type,sejour,debut,fin,option1,option2,option3,prix,login FROM reservations INNER JOIN utilisateurs ON reservations.id_utilisateur = utilisateurs.id";
+                $requeteres = "SELECT camping_reservations.id,lieu,type,sejour,debut,fin,option1,option2,option3,prix,login FROM camping_reservations INNER JOIN camping_utilisateurs ON camping_reservations.id_utilisateur = camping_utilisateurs.id";
                 // echo $requeteres;
                 $queryres = mysqli_query($cnx, $requeteres);
                 $resultatres = mysqli_fetch_all($queryres);

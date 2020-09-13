@@ -1,10 +1,10 @@
 <?php
 session_start();
 ob_start();
-$cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
+$cnx = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
 if ( isset($_GET["idresa"]) ) {
 $idresa = $_GET["idresa"];
-$requete1 = "SELECT lieu,type,sejour,debut,fin,option1,option2,option3,prix FROM reservations WHERE id=$idresa";
+$requete1 = "SELECT lieu,type,sejour,debut,fin,option1,option2,option3,prix FROM camping_reservations WHERE id=$idresa";
 $query1 = mysqli_query($cnx, $requete1);
 $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
 $taille = count($resultat) - 1;
@@ -97,7 +97,7 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
                         </form>
 
                    <?php
-                    $requetetarifs = "SELECT * FROM tarifs";
+                    $requetetarifs = "SELECT * FROM camping_tarifs";
                     $querytarifs = mysqli_query($cnx, $requetetarifs);
                     $resultattarifs = mysqli_fetch_all($querytarifs, MYSQLI_ASSOC);
                     if ( isset($_POST["valider"]) )
@@ -140,7 +140,7 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
                             $option3 = 1;
                             $prix = $prix + ($resultattarifs[0]['tarifo3'] * $sejour);
                           }
-                              $resaverif = "SELECT * FROM reservations WHERE (debut BETWEEN '$startdate' AND '$enddate') OR (fin BETWEEN '$startdate' AND '$enddate')";
+                              $resaverif = "SELECT * FROM camping_reservations WHERE (debut BETWEEN '$startdate' AND '$enddate') OR (fin BETWEEN '$startdate' AND '$enddate')";
                               $queryverif = mysqli_query($cnx, $resaverif);
                               $resultatverif = mysqli_fetch_all($queryverif, MYSQLI_ASSOC);
                               if(!empty($resultatverif)){
@@ -160,10 +160,10 @@ $datefinformat = date("Y-m-d", strtotime($resultat[0]['fin']));
                                 echo "<p class=\"pincorrect\">Plus de place disponible à cette date.</p>";
                               }
                               else{
-                              $update = "UPDATE reservations SET lieu='$lieu', type='$type', sejour='$sejour',debut='$datedebut', fin='$datefin',option1='$option1',option2='$option2', option3='$option3', prix='$prix' WHERE id = $idresa";
+                              $update = "UPDATE camping_reservations SET lieu='$lieu', type='$type', sejour='$sejour',debut='$datedebut', fin='$datefin',option1='$option1',option2='$option2', option3='$option3', prix='$prix' WHERE id = $idresa";
                               header("Location:reservation.php?idresa=".$idresa."");
                               $updatequery = mysqli_query($cnx, $update);
-                              }   
+                              }
                           } 
                   
 

@@ -21,17 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `camping`
 --
-CREATE DATABASE IF NOT EXISTS `camping` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `camping`;
+CREATE DATABASE IF NOT EXISTS `dbs781078` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dbs781078`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `reservations`
+-- Structure de la table `camping_reservations`
 --
 
-DROP TABLE IF EXISTS `reservations`;
-CREATE TABLE IF NOT EXISTS `reservations` (
+DROP TABLE IF EXISTS `camping_reservations`;
+CREATE TABLE IF NOT EXISTS `camping_reservations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lieu` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -47,10 +47,10 @@ CREATE TABLE IF NOT EXISTS `reservations` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `reservations`
+-- Déchargement des données de la table `camping_reservations`
 --
 
-INSERT INTO `reservations` (`id`, `lieu`, `type`, `sejour`, `debut`, `fin`, `option1`, `option2`, `option3`, `prix`, `id_utilisateur`) VALUES
+INSERT INTO `camping_reservations` (`id`, `lieu`, `type`, `sejour`, `debut`, `fin`, `option1`, `option2`, `option3`, `prix`, `id_utilisateur`) VALUES
 (1, 'plage', 'tente', 3, '2020-01-22 00:00:00', '2020-01-24 00:00:00', 1, 0, 1, 20, 1),
 (2, 'plage', 'campingcar', 3, '2020-01-22 00:00:00', '2020-01-24 00:00:00', 1, 0, 1, 20, 1),
 (3, 'pins', 'campingcar', 3, '2020-01-22 00:00:00', '2020-01-24 00:00:00', 1, 0, 1, 20, 1),
@@ -61,11 +61,11 @@ INSERT INTO `reservations` (`id`, `lieu`, `type`, `sejour`, `debut`, `fin`, `opt
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Structure de la table `camping_utilisateurs`
 --
 
-DROP TABLE IF EXISTS `utilisateurs`;
-CREATE TABLE IF NOT EXISTS `utilisateurs` (
+DROP TABLE IF EXISTS `camping_utilisateurs`;
+CREATE TABLE IF NOT EXISTS `camping_utilisateurs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `utilisateurs`
+-- Déchargement des données de la table `camping_utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `login`, `password`) VALUES
+INSERT INTO `camping_utilisateurs` (`id`, `login`, `password`) VALUES
 (1, 'nico', 'nico'),
 (2, 'Paulette', 'chinois'),
 (3, 'test', '$2y$12$7Pyj8z4RGB7KcvH22ZpDEOHsQvFXjy2ELQVAedmSMQB5vvQeuiVvK');

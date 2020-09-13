@@ -23,8 +23,8 @@ date_default_timezone_set("Europe/Paris");
             <?php
             if (isset($_SESSION['login']))
             {
-                $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_camping");
-                $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'";
+                $connexion = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+                $requete = "SELECT * FROM camping_utilisateurs WHERE login='" . $_SESSION['login'] . "'";
                 $query = mysqli_query($connexion, $requete);
                 $resultat = mysqli_fetch_assoc($query);
 
@@ -54,12 +54,12 @@ date_default_timezone_set("Europe/Paris");
                         } 
                         elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
                             $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
-                            $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
+                            $updatepwd = "UPDATE camping_utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
                             $query2 = mysqli_query($connexion, $updatepwd);
                             header('Location:profil.php');
                         }
                         $login = $_POST["login"];
-                        $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                        $req = "SELECT login FROM camping_utilisateurs WHERE login = '$login'";
                         $req3 = mysqli_query($connexion, $req);
                         $veriflog = mysqli_fetch_all($req3);
                             if(!empty($veriflog))
@@ -70,7 +70,7 @@ date_default_timezone_set("Europe/Paris");
                             }
                         if(empty($veriflog) && !empty($_POST['login']))
                             {
-                                $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "' WHERE id = '" . $resultat['id'] . "'";
+                                $updatelog = "UPDATE camping_utilisateurs SET login ='" . $_POST['login'] . "' WHERE id = '" . $resultat['id'] . "'";
                                 $querylog = mysqli_query($connexion, $updatelog);
                                 $_SESSION['login']=$_POST['login'];
                                 header("Location:profil.php");
@@ -82,7 +82,7 @@ date_default_timezone_set("Europe/Paris");
                 <article><h1>Mes réservations</h1></article>
                 <?php
 
-                $requeteres = "SELECT reservations.id,lieu,type,sejour,debut,fin,option1,option2,option3,prix FROM reservations INNER JOIN utilisateurs ON reservations.id_utilisateur = utilisateurs.id WHERE login = '" . $_SESSION['login'] . "'";
+                $requeteres = "SELECT camping_reservations.id,lieu,type,sejour,debut,fin,option1,option2,option3,prix FROM camping_reservations INNER JOIN camping_utilisateurs ON camping_reservations.id_utilisateur = camping_utilisateurs.id WHERE login = '" . $_SESSION['login'] . "'";
                 // echo $requeteres;
                 $queryres = mysqli_query($connexion, $requeteres);
                 $resultatres = mysqli_fetch_all($queryres);
